@@ -72,7 +72,8 @@ def main():
         years = st.multiselect("Choose the release year(s)",years_array, default=[current_year])
 
     if filter and rated and genres and years:
-        res = search_movies_by_rating(filter,rated,genres,years)
+        with st.spinner("Searching Movies"):
+            res = search_movies_by_rating(filter,rated,genres,years)
 
         if res["status"] == "Good":
             st.write("Successful Find!")
